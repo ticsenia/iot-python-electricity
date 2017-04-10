@@ -18,13 +18,15 @@ def test_visa():
 		#
 		# Aqui aparecera el listado de los diferentes dispositivos.
 		#
-		# Rellenar las siguientes lineas con la información extraida:
+		# Rellenar las siguientes lineas con la informacion extraida:
 		inst = rm.open_resource("Fill in the gaps")
 		print(inst.query("*IDN?"))
 		
 	except Exception as e:
 		print(" [ Error ] - VISA - No se ha podido : "+str(e))
 		print(" [ Error ] - Compruebe que esta instalado")
+		print(" [ Error ] - Run : sudo apt install python3-pyvisa")
+		print("")
 		print(" [ Error ] - Consulte el Readme.md")
 
 
