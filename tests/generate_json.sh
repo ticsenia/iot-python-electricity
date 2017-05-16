@@ -23,6 +23,8 @@ for nlinea in $(seq 1 $LINEAS); do
 	echo -e "\t\t\t \"note\" : \"${CURRENT_NOTE}\""
 	echo -e "\t\t } ,"
 	echo -e "\t},"	
+
+	sleep 0.5
 done
 
 
