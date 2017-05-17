@@ -36,7 +36,7 @@ def do_csv():
 
 def do_sanity_checks():
 	if len(sys.argv) != 4:
-		die("incorrect number of parameters")
+		die(" Incorrect number of parameters")
 	
 	if not os.path.exists(sys.argv[1]):
 		die(" The first argument must be a JSON File")
