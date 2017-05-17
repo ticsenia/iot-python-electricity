@@ -35,7 +35,7 @@ def do_csv():
 		linea = str(key)+","+str(value[0])+","+str(value[1])+","
 		try:
 			print("\t* Notes -> "+notes_data[key])
-			linea= linea +str(notes_data[key])
+			linea= linea +str(notes_data[key]).replace(",","-").replace(";","-")
 		except Exception as e:
 			print("\t* Notes -> Vacio")
 			linea= linea +"None"
