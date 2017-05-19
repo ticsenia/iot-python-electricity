@@ -18,7 +18,8 @@ while /bin/true; do
 	# con los valores del csv
 	# RELLENAR AQUI CON VUESTRO SCRIPT
 
-		
+	./insert_command_line.py temporal_csvfile.csv 	
+	
 	sleep 10
 
 done
