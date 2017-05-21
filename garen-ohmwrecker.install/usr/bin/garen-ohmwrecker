@@ -32,10 +32,7 @@ db_pass=""
 db_table_default=""
 
 # Some arguments - values
-ohmwrecker_ip=None
-ohmwrecker_model="Janitza511"
-ohmwrecker_operation="-c"
-ohmwrecker_daemonize=True
+args=""
 
 
 def die(msg):
@@ -144,13 +141,12 @@ def do_sanity_checks():
 	# Mejorando el tema
 	parser = argparse.ArgumentParser(description='Store values from Janitza into DB')
 	parser.add_argument('OHMWRECKER_IP', nargs='+',help='an IP for getting values')
-	parser.add_argument('--csv',help='type of content to get [CSV format data]')
+	parser.add_argument('-c','--csv',help='type of content to get [CSV format data]')
 	parser.add_argument('--no-daemonize', help="Launch program without being daemonized", action="store_true")
 	
 	args = parser.parse_args()
-	print(args.OHMWRECKER_IP)
 
-	sys.exit(0)
+	
 #
 # MAIN
 #
