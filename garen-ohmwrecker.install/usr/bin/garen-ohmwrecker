@@ -16,14 +16,18 @@ import configparser
 import threading
 import daemonize
 import argparse
-
+import logging
 
 # Algunas variables que se utilizan en 
 # en Garen
+garen_log="/var/log/garen.log"
 garen_conf="/etc/garen-ohmwrecker/garen.conf"
 garen_conf_d="/etc/garen-ohmwrecker/conf.d/"
 rutaJSON=""
 rutaNotesJSON=""
+
+# Logging values
+logging.basicConfig(filename=garen_log,format='%(asctime)s %(message)s')
 
 # Some values for default variables
 default_sensor_model=""
@@ -40,8 +44,6 @@ args=""
 
 def die(msg):
 	print(" * [ ERROR ] : "+msg)
-	print(" * [ USAGE ] :  python-garen.py IP [MODELO] -c")
-	print(" * [ USAGE ] :  python-garen.py IP [MODELO] -c [--no-daemonize]")
 	sys.exit(1)
 
 def load_configuration():
@@ -153,6 +155,7 @@ if __name__ == "__main__":
 
 	# Do some sanity checks
 	# arguments, files, and so on.
+	logging.warning('Starting Garen')
 	args=get_parameters()
 	
 	# Load configuration 
