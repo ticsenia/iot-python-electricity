@@ -175,7 +175,7 @@ def get_json(ipsensor,model):
 def store_measures(jmeasures,model):
 	# Este metodo nos permite obtene las descripciones y generar las 
 	# cadenas que seran almacenadas en la base de datos.
-	
+	print("sss")
 	logging.info('store_measures')
 	fnotes = open(garen_conf_d+model+".definition")
 	jnotes = json.load(fnotes)
@@ -258,7 +258,7 @@ if __name__ == "__main__":
 	auxf = open("tests/last.json")
 	jmeasures = json.load(auxf)
 	
-	print(str(jmeasures+"aaaa"))
+	print(str(jmeasures))
 
 	store_measures(jmeasures,args.model)
 
