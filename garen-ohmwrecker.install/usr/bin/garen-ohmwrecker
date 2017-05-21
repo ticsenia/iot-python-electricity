@@ -14,7 +14,7 @@ import os
 import MySQLdb
 import configparser
 import threading
-import daemon
+import daemonize
 import argparse
 
 

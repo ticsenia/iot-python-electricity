@@ -7,7 +7,7 @@ Standards-Version: 3.9.7
 
 Package: garen-ohmwrecker
 Architecture: all
-Depends: ${misc:Depends}, python3-mysqldb
+Depends: ${misc:Depends}, python3-mysqldb, python3-daemonize
 Description: iot - carry
  Simple package to solve the Estonian 
  problem.
