@@ -146,7 +146,7 @@ def do_sanity_checks():
 	parser.add_argument("--no-daemonize", help="Launch program without being daemonized", action="store_true")
 	
 	args = parser.parse_args()
-
+	return args
 	
 #
 # MAIN
@@ -156,7 +156,7 @@ if __name__ == "__main__":
 
 	# Do some sanity checks
 	# arguments, files, and so on.
-	do_sanity_checks()
+	args=do_sanity_checks()
 	
 	# Load configuration 
 	load_configuration()
