@@ -71,16 +71,16 @@ def load_configuration():
 	# pero esto favorece la legibilidad del codigo.
 	
 	# Servidor de bases de datos
-	db_server = config["mysqld"]["server"]
+	global db_server = config["mysqld"]["server"]
 	# Usuario
-	db_user = config["mysqld"]["user"]
+	global 	db_user = config["mysqld"]["user"]
 	# Contrasenya	
-	db_pass = config["mysqld"]["pass"]
+	global db_pass = config["mysqld"]["pass"]
 	# Tabla por defecto
-	db_table_default = config["mysqld"]["table_default"]
+	global db_table_default = config["mysqld"]["table_default"]
 	# Modelo de sensor por defecto (Janitza)
-	this.default_sensor_model=config["general"]["sensor_model"]
-	print(this.default_sensor_model)
+	global default_sensor_model=config["general"]["sensor_model"]
+	print(default_sensor_model)
 	
 	
 def store_in_db(smeasure):
