@@ -20,7 +20,7 @@ import logging
 
 # Algunas variables que se utilizan en 
 # en Garen
-garen_log="/var/log/garen.log"
+garen_log="/tmp/garen.log"
 garen_conf="/etc/garen-ohmwrecker/garen.conf"
 garen_conf_d="/etc/garen-ohmwrecker/conf.d/"
 rutaJSON=""
