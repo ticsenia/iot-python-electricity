@@ -249,7 +249,7 @@ if __name__ == "__main__":
 	
 	# Debug only
 	# jmeasures = get_json(args.ipsensor,args.model)
-	auxf = open("/tmp/last.json")
+	auxf = open("tests/last.json")
 	jmeasures = json.load(auxf)
 	
 	print(str(jmeasures))
