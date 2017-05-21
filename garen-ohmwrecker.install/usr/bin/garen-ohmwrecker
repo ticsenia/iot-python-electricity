@@ -248,7 +248,7 @@ def core(args):
 	store_measures(jmeasures,args.model)
 	
 	if args.daemon:
-		threading.Timer(interval, core).start()
+		threading.Timer(interval, core(args)).start()
 
 
 
