@@ -147,6 +147,7 @@ def do_sanity_checks():
 	#parser.add_argument('--csv|-c', metavar='ACTION', type=str, nargs='+', default="-c",help='type of content to get')
 	
 	args = parser.parse_args()
+	print(args.OHMWRECKER_IP)
 
 	sys.exit(0)
 #
