@@ -161,7 +161,7 @@ if __name__ == "__main__":
 	# Load configuration 
 	load_configuration()
 
-	print(args.model)
+	print(str(args))
 
 	sys.exit(0)	
 	variable_list = get_list_of_variables(model)
