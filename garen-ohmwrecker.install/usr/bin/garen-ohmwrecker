@@ -79,7 +79,7 @@ def load_configuration():
 	# Tabla por defecto
 	db_table_default = config["mysqld"]["table_default"]
 	# Modelo de sensor por defecto (Janitza)
-	default_sensor_model=config["general"]["sensor_model"]
+	this.default_sensor_model=config["general"]["sensor_model"]
 	print(this.default_sensor_model)
 	
 	
