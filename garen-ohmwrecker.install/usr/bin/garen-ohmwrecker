@@ -141,11 +141,12 @@ def get_list_of_variables(model):
 
 	try:
 		conffile=open(garen_conf_d+model+".conf")
-	
 		confstring=conffile.read().replace("\n",",")
 		confstring=lastreplace(confstring,","," ",1)
+
 	except Exception as e:
-		logging.error("Model file not found "+str(e))
+
+		logging.error(" ERROR - Model file not found "+str(e))
 
 	# Devolvemos la configuracion obtenida.	
 	return confstring
@@ -189,19 +190,19 @@ def store_measures(jmeasures,model):
 	# En un principio dejamos la variable vacia.
 	smeasures=""
 	for key, value in jmeasures.items():
-		#logging.info("* Key -> " + str(key) + "\n\t* Values -> "+str(value))
+		logging.info("* Key -> " + str(key) + "\n\t* Values -> "+str(value))
 		linea = str(key)+","+str(value[0])+","+str(value[1])+","
 		try:
-			#logging.info("\t* Notes -> "+jnotes[key])
+			logging.info("\t* Notes -> "+jnotes[key])
 			linea= linea +str(jnotes[key]).replace(",","-").replace(";","-")
 		except Exception as e:
-			#logging.info("\t* Notes -> Vacio")
+			logging.info("\t* Notes -> Vacio")
 			linea= linea +"None"
 		smeasures=smeasures+linea+"\n"
 
 	# Y ahora almacenamos en la base de datos 
 	# los valores obtenidos
-	store_in_db(smeasures)
+	#store_in_db(smeasures)
 	
 
 
@@ -259,7 +260,7 @@ if __name__ == "__main__":
 	
 	print(str(jmeasures))
 
-	#store_measures(jmeasures,args.model)
+	store_measures(jmeasures,args.model)
 
 
 
