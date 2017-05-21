@@ -25,6 +25,9 @@ garen_conf_d="/etc/garen-ohmwrecker/conf.d/"
 rutaJSON=""
 rutaNotesJSON=""
 
+# Some values for default variables
+default_sensor_model=""
+
 # Some values for Database
 db_server=""
 db_user=""
@@ -51,6 +54,7 @@ def load_configuration():
 	db_server = config["mysqld"]["server"]
 	db_pass = config["mysqld"]["pass"]
 	db_table_default = config["mysqld"]["table_default"]
+	default_sensor_model=config["general"]["sensor_model"]
 	
 	
 def store_in_db(smeasure):
@@ -131,14 +135,7 @@ def store_measures(jmeasures,model):
 	
 
 
-def do_sanity_checks():
-	# TODO 
-	# Mejorar esto de los argumentos que esta un pelin
-	# a fuego.
-	#if len(sys.argv) != 4 or len(sys.argv) != 3:
-	#	die(" Incorrect number of parameters")
-
-	# Mejorando el tema
+def get_parameters():
 	parser = argparse.ArgumentParser(description='Store values from Janitza into DB')
 	parser.add_argument('-ipsensor', nargs='+',help='an IP for getting values')
 	parser.add_argument("-m","--model",help="the model of sensor")
@@ -156,12 +153,14 @@ if __name__ == "__main__":
 
 	# Do some sanity checks
 	# arguments, files, and so on.
-	args=do_sanity_checks()
+	args=get_parameters()
 	
 	# Load configuration 
 	load_configuration()
 
-	print(str(args))
+	
+	if (args.model == None):
+		args.model = sensor_model
 
 	sys.exit(0)	
 	variable_list = get_list_of_variables(model)
