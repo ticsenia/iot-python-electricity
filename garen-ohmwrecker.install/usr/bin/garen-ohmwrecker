@@ -137,10 +137,15 @@ def get_list_of_variables(model):
 	# nombre incluye el modelo de una manera que podemos 
 	# construir la ruta al fichero sabiendo el modelo 
 	# que vamos a utilizar.
-	conffile=open(garen_conf_d+model+".conf")
+	confstring=""
+
+	try:
+		conffile=open(garen_conf_d+model+".conf")
 	
-	confstring=conffile.read().replace("\n",",")
-	confstring=lastreplace(confstring,","," ",1)
+		confstring=conffile.read().replace("\n",",")
+		confstring=lastreplace(confstring,","," ",1)
+	except Exception as e:
+		logging.error("Model file not found "+str(e))
 
 	# Devolvemos la configuracion obtenida.	
 	return confstring
