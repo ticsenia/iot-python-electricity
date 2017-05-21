@@ -160,7 +160,7 @@ if __name__ == "__main__":
 
 	
 	if (args.model == None):
-		args.model = sensor_model
+		args.model = default_sensor_model
 
 	print(str(args))
 	sys.exit(0)	
