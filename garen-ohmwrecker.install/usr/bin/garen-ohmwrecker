@@ -85,7 +85,7 @@ def load_configuration():
 	# Modelo de sensor por defecto (Janitza)
 	global default_sensor_model
 	default_sensor_model=config["general"]["sensor_model"]
-	print(default_sensor_model)
+	
 	
 	
 def store_in_db(smeasure):
