@@ -236,6 +236,7 @@ if __name__ == "__main__":
 	load_configuration()
 
 	if (args.model == None):
+		print(default_sensor_model)
 		args.model = default_sensor_model
 		print(str(args))
 
