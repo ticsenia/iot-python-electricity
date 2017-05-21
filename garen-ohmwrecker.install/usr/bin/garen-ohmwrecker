@@ -147,7 +147,7 @@ def do_sanity_checks():
 	parser.add_argument('OHMWRECKER_ACTION', default="-c",help='type of content to get [-c -->CSV format data]')
 	
 	args = parser.parse_args()
-	print(str(args.OHMWRECKER_IP)
+	print(args.OHMWRECKER_IP)
 
 	sys.exit(0)
 #
