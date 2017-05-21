@@ -26,7 +26,7 @@ rutaNotesJSON=""
 db_server=""
 db_user=""
 db_pass=""
-db_table=""
+db_table_default=""
 
 def die(msg):
 	print(" * [ ERROR ] : "+msg)
@@ -39,7 +39,10 @@ def load_configuration():
 	'''
 	config = configparser.ConfigParser()
 	config.read(garen_conf)
-	print(config["mysqld"]["user"])
+	db_user = config["mysqld"]["user"]
+	db_server = config["mysqld"]["server"]
+	db_pass = config["mysqld"]["pass"]
+	db_table_default = config["mysqld"]["table_default"]
 	sys.exit(1)
 	
 def store_in_db(smeasure):
