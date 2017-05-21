@@ -12,7 +12,7 @@ import sys
 import urllib.request
 import os
 import MySQLdb
-import ConfigParser
+import configparser
 import io
 
 # Algunas variables que se utilizan en 
@@ -37,9 +37,9 @@ def load_configuration():
 	'''
 	Load configuration from config files
 	'''
-	config = ConfigParser.RawConfigParser(allow_no_value=True)
-	config.readfp(io.BytesIO(garenConf))
-	print(config.get("mysqld","user"))
+	config = configparser.ConfigParser()
+	config.read(garenConf)
+	print(config["mysqld"]["user"])
 	sys.exit(1)
 	
 def store_in_db(smeasure):
