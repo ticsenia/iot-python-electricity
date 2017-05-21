@@ -18,6 +18,7 @@ import daemonize
 import argparse
 import logging
 
+
 # Algunas variables que se utilizan en 
 # en Garen
 garen_log="/tmp/garen.log"
@@ -31,6 +32,9 @@ logging.basicConfig(filename=garen_log,format='%(asctime)s %(message)s')
 
 # Some values for default variables
 default_sensor_model=""
+
+# Daemon info
+interval=10
 
 # Some values for Database
 db_server=""
@@ -85,6 +89,9 @@ def load_configuration():
 	# Modelo de sensor por defecto (Janitza)
 	global default_sensor_model
 	default_sensor_model=config["general"]["sensor_model"]
+
+	global interval
+	interval =config["daemin"]["interval"]
 	
 	
 	
@@ -175,7 +182,6 @@ def get_json(ipsensor,model):
 def store_measures(jmeasures,model):
 	# Este metodo nos permite obtene las descripciones y generar las 
 	# cadenas que seran almacenadas en la base de datos.
-	print("sss")
 	logging.warning('store_measures')
 	fnotes = open(garen_conf_d+model+".definition")
 	jnotes = json.load(fnotes)
@@ -227,6 +233,25 @@ def get_parameters():
 	args = parser.parse_args()
 	return args
 	
+
+def core(args):
+	# Metodo "Core" o central, que es el subsceptible a ser
+	# demonizado en caso de ser necesario.
+
+	variable_list = get_list_of_variables(args.model)
+	
+	# Debug only
+	# jmeasures = get_json(args.ipsensor,args.model)
+	auxf = open("tests/last.json")
+	jmeasures = json.load(auxf)
+	
+	store_measures(jmeasures,args.model)
+	
+	if not args.nodaemonize:
+		threading.Timer(interval, core).start()
+
+
+
 #
 # MAIN
 #
@@ -251,18 +276,8 @@ if __name__ == "__main__":
 		logging.warning(" * No sensor set, using default..: "+default_sensor_model)
 		args.model = default_sensor_model
 	
-	variable_list = get_list_of_variables(args.model)
 	
-	# Debug only
-	# jmeasures = get_json(args.ipsensor,args.model)
-	auxf = open("tests/last.json")
-	jmeasures = json.load(auxf)
-	
-	print(str(jmeasures))
-
-	store_measures(jmeasures,args.model)
-
-
+	core(args)
 
 
 
