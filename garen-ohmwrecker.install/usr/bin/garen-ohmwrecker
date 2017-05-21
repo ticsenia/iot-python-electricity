@@ -143,7 +143,7 @@ def do_sanity_checks():
 
 	# Mejorando el tema
 	parser = argparse.ArgumentParser(description='Store values from Janitza into DB')
-	parser.add_argument('ohmwrecker_ip', metavar='IP', type=str, nargs='+',hellp='an IP for getting values')
+	parser.add_argument('ohmwrecker_ip', metavar='IP', type=str, nargs='+',help='an IP for getting values')
 	
 	
 	args = parser.parse_args()
