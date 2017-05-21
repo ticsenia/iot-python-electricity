@@ -235,8 +235,7 @@ if __name__ == "__main__":
 	logging.warning(' * Load configuration ')
 	load_configuration()
 
-	print(args.model)
-	if (args.model == ""):
+	if (args.model == None):
 		args.model = default_sensor_model
 		print(str(args))
 
