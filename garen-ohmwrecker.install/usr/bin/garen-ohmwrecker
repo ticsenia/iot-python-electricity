@@ -140,8 +140,9 @@ def do_sanity_checks():
 
 	# Mejorando el tema
 	parser = argparse.ArgumentParser(description='Store values from Janitza into DB')
-	parser.add_argument('OHMWRECKER_IP', nargs='+',help='an IP for getting values')
-	parser.add_argument("-c","--csv",help="type of content to get [CSV format data]")
+	parser.add_argument('-ipsensor', nargs='+',help='an IP for getting values')
+	parser.add_argument("-m","--model",help="the model of sensor")
+	parser.add_argument("-c","--csv",help="type of content to get [CSV format data]", action="store_true")
 	parser.add_argument("--no-daemonize", help="Launch program without being daemonized", action="store_true")
 	
 	args = parser.parse_args()
@@ -160,12 +161,13 @@ if __name__ == "__main__":
 	# Load configuration 
 	load_configuration()
 
-	# Tal vez aqui si os sentis con ganas....
-	
+	print(args.model)
+
+	sys.exit(0)	
 	variable_list = get_list_of_variables(model)
 	
 	# Debug only
-	jmeasures = get_json(sys.argv[1],model)
+	jmeasures = get_json(args.ipsensor,model)
 	#auxf = open("last.json")
 	#jmeasures = json.load(auxf)
 
