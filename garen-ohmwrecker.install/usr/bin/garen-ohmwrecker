@@ -190,13 +190,13 @@ def store_measures(jmeasures,model):
 	# En un principio dejamos la variable vacia.
 	smeasures=""
 	for key, value in jmeasures.items():
-		logging.info("* Key -> " + str(key) + "\n\t* Values -> "+str(value))
+		logging.warning("* Key -> " + str(key) + "\n\t* Values -> "+str(value))
 		linea = str(key)+","+str(value[0])+","+str(value[1])+","
 		try:
-			logging.info("\t* Notes -> "+jnotes[key])
+			logging.warning("\t* Notes -> "+jnotes[key])
 			linea= linea +str(jnotes[key]).replace(",","-").replace(";","-")
 		except Exception as e:
-			logging.info("\t* Notes -> Vacio")
+			logging.warning("\t* Notes -> Vacio")
 			linea= linea +"None"
 		smeasures=smeasures+linea+"\n"
 
