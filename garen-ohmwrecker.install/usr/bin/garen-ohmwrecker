@@ -91,7 +91,7 @@ def load_configuration():
 	default_sensor_model=config["general"]["sensor_model"]
 
 	global interval
-	interval =config["daemon"]["interval"]
+	interval =int(config["daemon"]["interval"])
 	
 	
 	
