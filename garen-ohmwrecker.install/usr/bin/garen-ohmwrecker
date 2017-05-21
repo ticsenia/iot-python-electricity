@@ -159,7 +159,7 @@ if __name__ == "__main__":
 	load_configuration()
 
 	
-	if (args.model == None):
+	if (args.model == ""):
 		args.model = default_sensor_model
 
 	print(str(args))
