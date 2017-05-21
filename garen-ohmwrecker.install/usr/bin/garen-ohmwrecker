@@ -54,7 +54,7 @@ def load_configuration():
 	
 	# Lo primero, hacemos log de que la configuracion va a ser
 	# cargada en memoria.	
-	logging.info('load_configuration')
+	logging.warning('load_configuration')
 
 	# Obtenemos un objeto de tipo configparser
 	# que nos permite acceder a los diferentes 
@@ -90,7 +90,7 @@ def load_configuration():
 	
 def store_in_db(smeasure):
 	
-	logging.info('store_in_db')
+	logging.warning('store_in_db')
 	# Open database connection
 	db = MySQLdb.connect(db_server,db_user,db_pass,db_table_default)
 
@@ -126,7 +126,7 @@ def get_list_of_variables(model):
 	# Vamos a generar una variable que contendra el listado de las variables de la Janitza-511
 	# de tal manera el codigo quede lo mas limpio posible
 	
-	logging.info('get_list_of_variables')	
+	logging.warning('get_list_of_variables')	
 
 	# Esta variable contiene un diccionario (JSON) que 
 	# nos indica cuales son las variables que deben ser solicitadas
@@ -157,7 +157,7 @@ def get_json(ipsensor,model):
 	# lo que hacemos aqui es preparar la url de consulta con 
 	# la IP del dispositivo y la lista de variables que nos interesan
 	# del modelo.
-	logging.info('get_json')
+	logging.warning('get_json')
 
 	# Obtenemos la lista de variables
 	var_model=get_list_of_variables(model)
@@ -176,7 +176,7 @@ def store_measures(jmeasures,model):
 	# Este metodo nos permite obtene las descripciones y generar las 
 	# cadenas que seran almacenadas en la base de datos.
 	print("sss")
-	logging.info('store_measures')
+	logging.warning('store_measures')
 	fnotes = open(garen_conf_d+model+".definition")
 	jnotes = json.load(fnotes)
 	
