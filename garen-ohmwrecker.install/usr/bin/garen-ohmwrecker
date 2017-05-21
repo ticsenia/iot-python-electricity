@@ -234,9 +234,10 @@ def get_parameters():
 	return args
 	
 
-def core(args):
+def core():
 	# Metodo "Core" o central, que es el subsceptible a ser
 	# demonizado en caso de ser necesario.
+	global args
 
 	variable_list = get_list_of_variables(args.model)
 	
@@ -248,7 +249,7 @@ def core(args):
 	store_measures(jmeasures,args.model)
 	
 	if args.daemon:
-		threading.Timer(interval, core(args)).start()
+		threading.Timer(interval, core).start()
 
 
 
@@ -277,7 +278,7 @@ if __name__ == "__main__":
 		args.model = default_sensor_model
 	
 	
-	core(args)
+	core()
 
 
 
