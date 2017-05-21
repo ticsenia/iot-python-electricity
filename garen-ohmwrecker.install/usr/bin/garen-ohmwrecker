@@ -237,6 +237,7 @@ if __name__ == "__main__":
 
 	if (args.model == ""):
 		args.model = default_sensor_model
+		print(str(args))
 
 	sys.exit(0)	
 	variable_list = get_list_of_variables(model)
