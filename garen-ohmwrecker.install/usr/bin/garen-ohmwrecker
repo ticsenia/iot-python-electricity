@@ -138,8 +138,8 @@ def do_sanity_checks():
 	# TODO 
 	# Mejorar esto de los argumentos que esta un pelin
 	# a fuego.
-	if len(sys.argv) != 4 or len(sys.argv) != 3:
-		die(" Incorrect number of parameters")
+	#if len(sys.argv) != 4 or len(sys.argv) != 3:
+	#	die(" Incorrect number of parameters")
 
 	# Mejorando el tema
 	parser = argparse.ArgumentParser(description='Store values from Janitza into DB')
