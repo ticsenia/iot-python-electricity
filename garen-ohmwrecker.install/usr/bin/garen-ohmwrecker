@@ -80,7 +80,7 @@ def load_configuration():
 	db_table_default = config["mysqld"]["table_default"]
 	# Modelo de sensor por defecto (Janitza)
 	default_sensor_model=config["general"]["sensor_model"]
-	print(default_sensor_model)
+	print(this.default_sensor_model)
 	
 	
 def store_in_db(smeasure):
