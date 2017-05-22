@@ -11,10 +11,9 @@ import requests
 import sys
 import urllib.request
 import os
-import MySQLdb
+
 import configparser
 import threading
-import daemonize
 import argparse
 import logging
 
@@ -99,7 +98,8 @@ def store_in_db(smeasure):
 	
 	logging.warning('store_in_db')
 	# Open database connection
-	db = MySQLdb.connect(db_server,db_user,db_pass,db_table_default)
+	import cymysql
+	db = cymysql.connect(db_server,db_user,db_pass,db_table_default)
 
 	# prepare a cursor object using cursor() method
 	cursor = db.cursor()
@@ -170,8 +170,7 @@ def get_json(ipsensor,model):
 	var_model=get_list_of_variables(model)
 	
 	# Construimos la url
-	url="http://"+ipsensor+"/json.do?"+var_model
-
+	url="http://"+str(ipsensor[0])+"/json.do?"+var_model
 	# Realizamos la peticion
 	r = urllib.request.urlopen(url)
 	
@@ -242,9 +241,9 @@ def core():
 	variable_list = get_list_of_variables(args.model)
 	
 	# Debug only
-	# jmeasures = get_json(args.ipsensor,args.model)
-	auxf = open("tests/last.json")
-	jmeasures = json.load(auxf)
+	jmeasures = get_json(args.ipsensor,args.model)
+	#auxf = open("tests/last.json")
+	#jmeasures = json.load(auxf)
 	
 	store_measures(jmeasures,args.model)
 	
