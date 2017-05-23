@@ -269,7 +269,7 @@ def core():
 	variable_list = get_list_of_variables(args.model)
 	
 	# DEBUG
-	jmeasures = get_json(args.sensorip,args.model)
+	jmeasures = get_json(args.model)
 	auxf = open("/usr/share/garen-ohmwrecker/tests/last.json")
 	jmeasures = json.load(auxf)
 	
