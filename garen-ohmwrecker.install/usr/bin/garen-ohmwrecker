@@ -193,7 +193,7 @@ def get_json(sensor_ip,model):
 def store_measures(jmeasures,model):
 	# Este metodo nos permite obtene las descripciones y generar las 
 	# cadenas que seran almacenadas en la base de datos.
-	logging.warning('store_measures')
+	logging.warning('Storing measures ...')
 	fnotes = open(garen_conf_d+model+".definition")
 	jnotes = json.load(fnotes)
 	
