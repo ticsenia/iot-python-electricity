@@ -102,7 +102,7 @@ def load_configuration():
 	global sensor_ip
 	sensor_ip = config["general"]["sensor_ip"]
 
-	logging.warning(" Load configuration done: "+str(sensor_ip+)+" each "+str(interval)+" seconds")
+	logging.warning(" Load configuration done: "+str(sensor_ip)+" each "+str(interval)+" seconds")
 	
 	
 	
