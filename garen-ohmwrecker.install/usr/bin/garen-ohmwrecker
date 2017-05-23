@@ -137,7 +137,7 @@ def store_in_db(smeasure):
 		# disconnect from server
 		db.close()
 
-	except mysql.connector.Error as e:
+	except mysql.connector.Error as err:
 		if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
 			logging.error("Something is wrong with your user name or password")
 		elif err.errno == errorcode.ER_BAD_DB_ERROR:
