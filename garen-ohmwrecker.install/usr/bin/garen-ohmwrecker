@@ -127,7 +127,7 @@ def store_in_db(smeasure):
 
 		try:
 			# Execute the SQL command
-			cursor.execute(*sql)
+			cursor.execute(sql)
 			# Commit your changes in the database
 			db.commit()
 		except:
