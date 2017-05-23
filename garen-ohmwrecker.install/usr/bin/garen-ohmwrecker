@@ -44,6 +44,7 @@ db_server=""
 db_user=""
 db_pass=""
 db_table_default=""
+db_database=""
 
 # Some arguments - values
 args=""
@@ -94,6 +95,10 @@ def load_configuration():
 	# Tabla por defecto
 	global db_table_default
 	db_table_default = config["mysqld"]["table_default"]
+
+	global db_database
+	db_database = config["mysqld"]["database"]
+
 	# Modelo de sensor por defecto (Janitza)
 	global default_sensor_model
 	default_sensor_model=config["general"]["sensor_model"]
@@ -110,13 +115,13 @@ def load_configuration():
 	
 def store_in_db(smeasure):
 	
-	logging.warning('Storing data into DB')
+	logging.warning('Storing data into DB' +db_table_default)
 	# Open database connection
 	
 	try:
 
 		logging.warning('Creating connector')
-		db = mysql.connector.connect(db_server,db_user,db_pass,db_table_default)
+		db = mysql.connector.connect(db_server,db_user,db_pass,db_database)
 
 		# prepare a cursor object using cursor() method
 		logging.warning('Creating connector - cursor')
