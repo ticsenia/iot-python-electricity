@@ -1,3 +1,12 @@
+garen-ohmwrecker (0.2) xenial; urgency=medium
+
+  * New custom-conf at /etc/garen-ohmwrecker/garen-custom.conf
+  * Using pure pythonic way to access database in RasPI devices
+  * New init script, no more "cli" features.
+  * New tests directory on /usr/share/ to control some useful files
+
+ -- Angel Berlanas Vicente <angel.berlanas@gmail.com>  Tue, 23 May 2017 08:14:29 +0200
+
 garen-ohmwrecker (0.1) xenial; urgency=medium
 
   * Initial release.
