@@ -22,6 +22,7 @@ import logging
 # en Garen
 garen_log="/var/log/garen.log"
 garen_conf="/etc/garen-ohmwrecker/garen.conf"
+garen_custom_conf="/etc/garen-ohmwrecker/garen-custom.conf"
 garen_conf_d="/etc/garen-ohmwrecker/conf.d/"
 rutaJSON=""
 rutaNotesJSON=""
@@ -66,6 +67,7 @@ def load_configuration():
 	config = configparser.ConfigParser()
 	config.read(garen_conf)
 
+	config.read(garen_custom_conf)
 	# Una vez tenemos la configuracion en "config", lo que hacemos 
 	# es rellenar las variables que utilitaremos con los diferentes valores.
 	# En realidad esto no haria falta, podriamos realizar todas las 
@@ -207,6 +209,7 @@ def store_measures(jmeasures,model):
 
 	# Y ahora almacenamos en la base de datos 
 	# los valores obtenidos
+	# DEBUG
 	#store_in_db(smeasures)
 	
 
@@ -240,7 +243,7 @@ def core():
 
 	variable_list = get_list_of_variables(args.model)
 	
-	# Debug only
+	# DEBUG
 	#jmeasures = get_json(args.ipsensor,args.model)
 	auxf = open("/usr/share/garen-ohmwrecker/tests/last.json")
 	jmeasures = json.load(auxf)
