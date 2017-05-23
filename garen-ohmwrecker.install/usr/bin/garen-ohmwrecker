@@ -11,11 +11,12 @@ import requests
 import sys
 import urllib.request
 import os
-
 import configparser
 import threading
 import argparse
 import logging
+
+import cymysql
 
 
 # Algunas variables que se utilizan en 
@@ -59,7 +60,7 @@ def load_configuration():
 	
 	# Lo primero, hacemos log de que la configuracion va a ser
 	# cargada en memoria.	
-	logging.warning('load_configuration')
+	logging.warning('Loading configuration')
 
 	# Obtenemos un objeto de tipo configparser
 	# que nos permite acceder a los diferentes 
@@ -108,9 +109,9 @@ def load_configuration():
 	
 def store_in_db(smeasure):
 	
-	logging.warning('store_in_db')
+	logging.warning('Storing data into DB')
 	# Open database connection
-	import cymysql
+	
 	db = cymysql.connect(db_server,db_user,db_pass,db_table_default)
 
 	# prepare a cursor object using cursor() method
@@ -145,7 +146,7 @@ def get_list_of_variables(model):
 	# Vamos a generar una variable que contendra el listado de las variables de la Janitza-511
 	# de tal manera el codigo quede lo mas limpio posible
 	
-	logging.warning('get_list_of_variables')	
+	logging.warning('Getting values for Model')	
 
 	# Esta variable contiene un diccionario (JSON) que 
 	# nos indica cuales son las variables que deben ser solicitadas
@@ -176,7 +177,7 @@ def get_json(sensor_ip,model):
 	# lo que hacemos aqui es preparar la url de consulta con 
 	# la IP del dispositivo y la lista de variables que nos interesan
 	# del modelo.
-	logging.warning('get_json from '+str(sensor_ip))
+	logging.warning('JSON values are getting from '+str(sensor_ip))
 
 	# Obtenemos la lista de variables
 	var_model=get_list_of_variables(model)
