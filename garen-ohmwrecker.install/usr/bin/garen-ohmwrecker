@@ -197,8 +197,8 @@ def get_json(model):
 	url="http://"+str(sensor_ip)+"/json.do?"+var_model
 	
 	# DEBUG
-	logging.warning("URL is "+url)
-	return "{}"
+	#logging.warning("URL is "+url)
+	#return "{}"
 	# Realizamos la peticion
 	r = urllib.request.urlopen(url)
 	
@@ -236,7 +236,7 @@ def store_measures(jmeasures,model):
 	# Y ahora almacenamos en la base de datos 
 	# los valores obtenidos
 	# DEBUG
-	#store_in_db(smeasures)
+	store_in_db(smeasures)
 	
 
 
@@ -269,9 +269,11 @@ def core():
 	variable_list = get_list_of_variables(args.model)
 	
 	# DEBUG
+	#auxf = open("/usr/share/garen-ohmwrecker/tests/last.json")
+	#jmeasures = json.load(auxf)
+	
 	jmeasures = get_json(args.model)
-	auxf = open("/usr/share/garen-ohmwrecker/tests/last.json")
-	jmeasures = json.load(auxf)
+	
 	
 	store_measures(jmeasures,args.model)
 	
