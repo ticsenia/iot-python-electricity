@@ -226,7 +226,7 @@ def get_parameters():
 	parser.add_argument('-ipsensor', nargs='+',help='an IP for getting values')
 	parser.add_argument("-m","--model",help="the model of sensor")
 	parser.add_argument("-c","--csv",help="type of content to get [CSV format data]", action="store_true")
-	parser.add_argument("--daemon", help="Launch program as a daemon", action="store_true")
+	parser.add_argument("--nodaemon", help="Not launch program as a daemon", action="store_true")
 
 	# Obtenemos los diferentes argumentos	
 	args = parser.parse_args()
@@ -247,7 +247,7 @@ def core():
 	
 	store_measures(jmeasures,args.model)
 	
-	if args.daemon:
+	if not args.nodaemon:
 		threading.Timer(interval, core).start()
 
 
