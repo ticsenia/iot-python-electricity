@@ -241,9 +241,9 @@ def core():
 	variable_list = get_list_of_variables(args.model)
 	
 	# Debug only
-	jmeasures = get_json(args.ipsensor,args.model)
-	#auxf = open("tests/last.json")
-	#jmeasures = json.load(auxf)
+	#jmeasures = get_json(args.ipsensor,args.model)
+	auxf = open("/usr/share/garen-ohmwrecker/tests/last.json")
+	jmeasures = json.load(auxf)
 	
 	store_measures(jmeasures,args.model)
 	
