@@ -183,7 +183,7 @@ def get_list_of_variables(model):
 	return confstring
 
 
-def get_json(sensor_ip,model):
+def get_json(model):
 	# Esta es la parte mas delicada de la ejecucion de garen
 	# lo que hacemos aqui es preparar la url de consulta con 
 	# la IP del dispositivo y la lista de variables que nos interesan
