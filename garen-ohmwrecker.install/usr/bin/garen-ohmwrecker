@@ -121,7 +121,7 @@ def store_in_db(smeasure):
 	try:
 
 		logging.warning('Creating connector '+db_user+db_pass+db_server+db_database )
-		db =cymysql.connect(db_user,db_pass,db_server,db_database)
+		db =cymysql.connect(db_server,db_user,db_pass,db_database)
 
 		# prepare a cursor object using cursor() method
 		logging.warning('Creating connector - cursor')
