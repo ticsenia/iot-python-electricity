@@ -194,7 +194,7 @@ def get_json(model):
 	var_model=get_list_of_variables(model)
 	
 	# Construimos la url
-	url="http://"+str(sensor_ip[0])+"/json.do?"+var_model
+	url="http://"+str(sensor_ip)+"/json.do?"+var_model
 	
 	# DEBUG
 	logging.warning("URL is "+url)
