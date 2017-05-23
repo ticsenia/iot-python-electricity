@@ -207,7 +207,7 @@ def store_measures(jmeasures,model):
 
 	# Y ahora almacenamos en la base de datos 
 	# los valores obtenidos
-	store_in_db(smeasures)
+	#store_in_db(smeasures)
 	
 
 
