@@ -64,7 +64,7 @@ def load_configuration():
 	# cargada en memoria.	
 	# Logging values
 	logging.basicConfig(filename=garen_log,format='%(asctime)s %(message)s')
-	logging.warning('Loading configuration')
+	logging.warning(' * Loading configuration')
 
 	# Obtenemos un objeto de tipo configparser
 	# que nos permite acceder a los diferentes 
@@ -111,23 +111,23 @@ def load_configuration():
 	global sensor_ip
 	sensor_ip = config["general"]["sensor_ip"]
 
-	logging.warning(" Load configuration done: "+str(sensor_ip)+" each "+str(interval)+" seconds")
+	logging.warning(" * Load configuration done: "+str(sensor_ip)+" each "+str(interval)+" seconds")
 
 
 	
 	
 def store_in_db(smeasure):
 	
-	logging.warning('Storing data into DB' +db_table_default)
+	logging.warning(' * Storing data into DB' +db_table_default)
 	# Open database connection
 	import cymysql	
 	try:
 
-		logging.warning('Creating connector '+db_user+db_pass+db_server+db_database )
+		logging.warning(' * Creating connector '+db_user+db_pass+db_server+db_database )
 		db =cymysql.connect(db_server,db_user,db_pass,db_database)
 
 		# prepare a cursor object using cursor() method
-		logging.warning('Creating connector - cursor')
+		logging.warning(' * Creating connector - cursor')
 		cursor = db.cursor()
 
 		# Prepare SQL query to INSERT a record into the database.
@@ -145,7 +145,7 @@ def store_in_db(smeasure):
 		db.close()
 
 	except Exception as err:
-		logging.error("GarenError "+str(err))
+		logging.error(" * [ERROR] : "+str(err))
 
 
 
@@ -161,7 +161,7 @@ def get_list_of_variables(model):
 	# Vamos a generar una variable que contendra el listado de las variables de la Janitza-511
 	# de tal manera el codigo quede lo mas limpio posible
 	
-	logging.warning('Getting values for Model')	
+	logging.warning(' * Getting values for Model')	
 
 	# Esta variable contiene un diccionario (JSON) que 
 	# nos indica cuales son las variables que deben ser solicitadas
@@ -181,10 +181,10 @@ def get_list_of_variables(model):
 
 	except Exception as e:
 
-		logging.error(" ERROR - Model file not found "+str(e))
+		logging.error(" * [ERROR] : Model file not found "+str(e))
 
 	# Devolvemos la configuracion obtenida.	
-	logging.warning('Return configuration')
+	logging.warning(' * Return configuration')
 	return confstring
 
 
@@ -193,7 +193,7 @@ def get_json(model):
 	# lo que hacemos aqui es preparar la url de consulta con 
 	# la IP del dispositivo y la lista de variables que nos interesan
 	# del modelo.
-	logging.warning('JSON values are getting from '+str(sensor_ip))
+	logging.warning(' * JSON values are getting from '+str(sensor_ip))
 
 	# Obtenemos la lista de variables
 	var_model=get_list_of_variables(model)
@@ -214,7 +214,7 @@ def get_json(model):
 def store_measures(jmeasures,model):
 	# Este metodo nos permite obtene las descripciones y generar las 
 	# cadenas que seran almacenadas en la base de datos.
-	logging.warning('Storing measures ...')
+	logging.warning(' * Storing measures ...')
 	fnotes = open(garen_conf_d+model+".definition")
 	jnotes = json.load(fnotes)
 	
