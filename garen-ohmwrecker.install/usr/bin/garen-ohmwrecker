@@ -294,6 +294,13 @@ def core():
 
 if __name__ == "__main__":
 
+	# Lo primero va a ser comprobar los permisos
+
+	if os.getuid() == 0:
+		print("r00tness!")
+	else:
+		die("I cannot run as a mortal. Sorry.")
+
 	# Este es metodo que se invoca cuando lanzamos a garen desde
 	# la linea de comandos, asi que vamos a  ir haciendo log 
 	# de cada uno de los pasos.
