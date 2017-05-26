@@ -1,3 +1,9 @@
+garen-ohmwrecker (0.4) xenial; urgency=medium
+
+  * Added interva
+
+ -- Angel Berlanas Vicente <angel.berlanas@gmail.com>  Fri, 26 May 2017 08:25:23 +0200
+
 garen-ohmwrecker (0.3) xenial; urgency=medium
 
   * New configuration manager
