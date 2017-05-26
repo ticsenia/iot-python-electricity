@@ -20,6 +20,15 @@ import mysql.connector
 from mysql.connector import errorcode
 
 
+
+# Lo primero va a ser comprobar los permisos
+if os.getuid() == 0:
+	print("r00tness!")
+else:
+	print("I cannot run as a mortal. Sorry.")
+	sys.exit(0)
+
+
 # Algunas variables que se utilizan en 
 # en Garen
 garen_log="/var/log/garen.log"
@@ -29,7 +38,8 @@ garen_conf_d="/etc/garen-ohmwrecker/conf.d/"
 rutaJSON=""
 rutaNotesJSON=""
 
-
+# Logging values
+logging.basicConfig(filename=garen_log,format='%(asctime)s %(message)s')
 
 
 # Some values for default variables
@@ -62,8 +72,8 @@ def load_configuration():
 	
 	# Lo primero, hacemos log de que la configuracion va a ser
 	# cargada en memoria.	
-	# Logging values
-	logging.basicConfig(filename=garen_log,format='%(asctime)s %(message)s')
+
+
 	logging.warning(' * Loading configuration')
 
 	# Obtenemos un objeto de tipo configparser
@@ -296,12 +306,6 @@ def core():
 
 if __name__ == "__main__":
 
-	# Lo primero va a ser comprobar los permisos
-
-	if os.getuid() == 0:
-		print("r00tness!")
-	else:
-		die("I cannot run as a mortal. Sorry.")
 
 	# Este es metodo que se invoca cuando lanzamos a garen desde
 	# la linea de comandos, asi que vamos a  ir haciendo log 
