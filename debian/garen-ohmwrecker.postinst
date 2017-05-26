@@ -11,6 +11,8 @@ case $1 in
                 chown -R www-data:www-data /var/local/garen-ohmwrecker/ || true
 		chown -R www-data:www-data /var/www/ || true
 		chmod 666 /var/local/garen-ohmwrecker/garen-custom.conf || true
+		echo " * [ Garen ] : Installing cymysql via PIP"
+		pip install cymysql
 		echo " * [ Garen ] : Restarting service"
 		service garen restart  || true
         ;;

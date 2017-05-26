@@ -5,7 +5,7 @@
 # --
 # -- RELLENAR AQUI 
 #
-
+import cymysql
 import json
 import requests
 import sys
@@ -15,9 +15,6 @@ import configparser
 import threading
 import argparse
 import logging
-
-import mysql.connector
-from mysql.connector import errorcode
 
 
 
