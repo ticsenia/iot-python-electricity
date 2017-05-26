@@ -138,7 +138,7 @@ def store_in_db(skeys,smeasures):
 		cursor = db.cursor()
 
 		# Prepare SQL query to INSERT a record into the database.
-		sql = ("INSERT INTO umg511_tbl ("+skeys+") VALUES (" +smeasures+")")
+		sql = ("INSERT INTO umg511_tbl ("+str(skeys)+") VALUES (" +str(smeasures)+")")
 		logging.warning(str(sql))
 		try: 
 			# Execute the SQL command
