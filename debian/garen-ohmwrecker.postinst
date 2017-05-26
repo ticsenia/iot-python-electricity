@@ -8,7 +8,8 @@ case $1 in
         configure)
                 # Installing operation
 		echo " * [ Garen ] : Changing owner at /var/local/garen-ohmwrecker/"
-                chown -R www-data:www-data /var/local/garen-ohmwrecker/
+                chown -R www-data:www-data /var/local/garen-ohmwrecker/ || true
+		chmod 666 /var/local/garen-ohmwrecker/garen-custom.conf || true 
         ;;
 
         abort-upgrade|abort-remove|abort-deconfigure)
