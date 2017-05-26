@@ -254,6 +254,7 @@ def store_measures(jmeasures,model):
 		try:
 			skeys.append(key)
 			antes=value[0].replace("[","")
+			logging.warning(str(antes))
 			smeasures.append(antes)
 		except Exception as e:
 			logging.warning("Error: "+str(e))
