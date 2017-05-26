@@ -110,7 +110,7 @@ def load_configuration():
 	sensor_ip = config["general"]["sensor_ip"]
 
 	logging.warning(" Load configuration done: "+str(sensor_ip)+" each "+str(interval)+" seconds")
-	
+	sys.exit(0)
 	
 	
 def store_in_db(smeasure):
