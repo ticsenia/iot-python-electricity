@@ -1,3 +1,11 @@
+garen-ohmwrecker (0.3) xenial; urgency=medium
+
+  * New configuration manager
+  * Pretty log now!
+  * More permissions checked than never before
+
+ -- Angel Berlanas Vicente <angel.berlanas@gmail.com>  Fri, 26 May 2017 07:43:34 +0200
+
 garen-ohmwrecker (0.2) xenial; urgency=medium
 
   * New custom-conf at /etc/garen-ohmwrecker/garen-custom.conf
