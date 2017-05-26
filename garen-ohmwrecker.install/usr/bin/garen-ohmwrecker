@@ -123,7 +123,7 @@ def load_configuration():
 
 	
 	
-def store_in_db(smeasure):
+def store_in_db(skeys,smeasures):
 	
 	logging.warning(' * Storing data into DB' +db_table_default)
 	# Open database connection
@@ -138,8 +138,8 @@ def store_in_db(smeasure):
 		cursor = db.cursor()
 
 		# Prepare SQL query to INSERT a record into the database.
-		sql = ("""INSERT INTO umg511_tbl (umg511_text) VALUES (%s)""", smeasure)
-		try:
+		sql = ("""INSERT INTO umg511_tbl (%s) VALUES (%s)""", skeys, smeasure)
+		try: 
 			# Execute the SQL command
 			cursor.execute(*sql)
 			# Commit your changes in the database
@@ -233,22 +233,31 @@ def store_measures(jmeasures,model):
 	# almacenadas en la base de datos con los diferentes valores
 	# de las variables.
 	# En un principio dejamos la variable vacia.
-	smeasures=""
+	skeys=[]
+	smeasures=[]
+	#for key, value in jmeasures.items():
+	#	logging.warning("* Key -> " + str(key) + "-- Values -> "+str(value))
+	#	linea = str(key)+","+str(value[0])+","+str(value[1])+","
+	#
+	#	try:
+	#		logging.warning("-- Notes -> "+jnotes[key])
+	#
+	#	linea= linea +str(jnotes[key]).replace(",","-").replace(";","-")
+	#	except Exception as e:
+	#		logging.warning("-- Notes -> Vacio")
+	#		linea= linea +"None"
+	#	smeasures=smeasures+linea+"\n"
 	for key, value in jmeasures.items():
-		#logging.warning("* Key -> " + str(key) + "-- Values -> "+str(value))
-		linea = str(key)+","+str(value[0])+","+str(value[1])+","
+		logging.warning("* Key -> " + str(key) + "-- Values -> "+str(value))
 		try:
-			#logging.warning("-- Notes -> "+jnotes[key])
-			linea= linea +str(jnotes[key]).replace(",","-").replace(";","-")
+			skeys.append(value[0])
+			smeasures.append(value[1])
 		except Exception as e:
-			#logging.warning("-- Notes -> Vacio")
-			linea= linea +"None"
-		smeasures=smeasures+linea+"\n"
-
+			logging.warning("Error: "+str(e))
 	# Y ahora almacenamos en la base de datos 
 	# los valores obtenidos
 	# DEBUG
-	store_in_db(smeasures)
+	store_in_db(skeys,smeasures)
 	
 
 
@@ -281,13 +290,13 @@ def core():
 	variable_list = get_list_of_variables(args.model)
 	
 	# DEBUG
-	#auxf = open("/usr/share/garen-ohmwrecker/tests/last.json")
-	#jmeasures = json.load(auxf)
+	auxf = open("/usr/share/garen-ohmwrecker/tests/last.json")
+	jmeasures = json.load(auxf)
 	
-	jmeasures = get_json(args.model)
+	#jmeasures = get_json(args.model)
 	
 	# DEBUG
-	#store_measures(jmeasures,args.model)
+	store_measures(jmeasures,args.model)
 	
 	# This is called for if the values are changed in custom conf
 	load_configuration()

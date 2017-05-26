@@ -1,5 +1,19 @@
-DROP TABLE umg511_tbl; 
+-- DATABASE 
 
+DROP DATABASE IF EXISTS janitza511;
+CREATE DATABASE janitza511;
+USE janitza511;
+
+-- USER 
+DROP USER 'user1'@'localhost';
+CREATE USER 'user1'@'localhost' IDENTIFIED BY '-+N00b1+-';
+GRANT ALL PRIVILEGES ON *.* TO "user1"@"localhost" WITH GRANT OPTION;
+-- GRANT ALL PRIVILEGES ON *.* TO user1 @'localhost'  IDENTIFIED BY 'user1' WITH GRANT OPTION;;
+FLUSH PRIVILEGES;
+
+
+-- TABLES
+-- DROP TABLE IF EXISTS umg511_tbl;
 CREATE TABLE umg511_tbl (
 	_G_ULN_0 varchar(255),
 	_G_ULN_1 varchar(255),
