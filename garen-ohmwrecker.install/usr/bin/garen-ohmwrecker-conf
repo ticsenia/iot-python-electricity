@@ -78,9 +78,8 @@ def set_ip(args,config):
 	# Establecemos la IP en la configuracion.
 	config["general"]["sensor_ip"]=args.setip
 
-	# Guardamos el fichero
-	config.write(garen_custom_conf)
 
+	return config
 
 #
 # MAIN
@@ -104,7 +103,11 @@ if __name__ == "__main__":
 		print("Garen Conf : Sensor ip is "+config["general"]["sensor_ip"])
 	
 	if (args.setip):
-		set_ip(args,config)
+		config = set_ip(args,config)
 				
+
+	# Save configuration file
+	with open(garen_custom_conf, 'w') as configfile:
+		config.write(configfile)
 
 
