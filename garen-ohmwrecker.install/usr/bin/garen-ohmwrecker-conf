@@ -98,6 +98,7 @@ if __name__ == "__main__":
 	
 	# Load configuration 
 	config = load_configuration()
+	print(config)
 
 	if (args.getip):
 		print("Garen Conf : Sensor ip is "+sensor_ip)
