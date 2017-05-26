@@ -15,15 +15,12 @@ import logging
 
 # Algunas variables que se utilizan en 
 # en Garen
-garen_log="/var/log/garen.log"
 garen_conf="/etc/garen-ohmwrecker/garen.conf"
 garen_custom_conf="/etc/garen-ohmwrecker/garen-custom.conf"
 garen_conf_d="/etc/garen-ohmwrecker/conf.d/"
 rutaJSON=""
 rutaNotesJSON=""
 
-# Logging values
-logging.basicConfig(filename=garen_log,format='%(asctime)s %(message)s')
 
 # Some values for default variables
 default_sensor_model=""
@@ -42,10 +39,6 @@ def load_configuration():
 	# los parametros para la conexion a la base de datos y otros datos 
 	# utiles para garen.
 	
-	# Lo primero, hacemos log de que la configuracion va a ser
-	# cargada en memoria.	
-	logging.warning('Loading custom configuration')
-
 	# Obtenemos un objeto de tipo configparser
 	# que nos permite acceder a los diferentes 
 	# parametros de configuracion que se encuentran 
@@ -71,7 +64,6 @@ def load_configuration():
 	global sensor_ip
 	sensor_ip = config["general"]["sensor_ip"]
 
-	logging.warning(" Load configuration done: "+str(sensor_ip)+" each "+str(interval)+" seconds")
 	
 
 
@@ -101,21 +93,15 @@ if __name__ == "__main__":
 	# la linea de comandos, asi que vamos a  ir haciendo log 
 	# de cada uno de los pasos.
 
-	logging.warning(' * Starting Garen Conf')
-	
+
 	# Obtenemos los argumentos con los que hemos sido invocados
-	logging.warning(' * Getting parameters ')
 	args=get_parameters()
 	
 	# Load configuration 
-	logging.warning(' * Load configuration ')
 	load_configuration()
 
 	if (args.getip):
 		print("Garen Conf : Sensor ip is "+sensor_ip)
 	
-	
-	core()
-
 
 
