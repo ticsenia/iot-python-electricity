@@ -252,9 +252,8 @@ def store_measures(jmeasures,model):
 		
 		logging.warning("* Key -> " + str(key) + "-- Values -> "+str(value))
 		try:
-			skeys.append(key)
-			antes=str(value[0]).replace("[","")
-			smeasures.append(antes)
+			skeys.append(str(key).replace("[","").replace("]",""))
+			smeasures.append(str(value[0]).replace("[","").replace("]",""))
 		except Exception as e:
 			logging.warning("Error: "+str(e))
 	# Y ahora almacenamos en la base de datos 
