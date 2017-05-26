@@ -110,7 +110,8 @@ def load_configuration():
 	sensor_ip = config["general"]["sensor_ip"]
 
 	logging.warning(" Load configuration done: "+str(sensor_ip)+" each "+str(interval)+" seconds")
-	sys.exit(0)
+
+
 	
 	
 def store_in_db(smeasure):
@@ -275,9 +276,12 @@ def core():
 	
 	jmeasures = get_json(args.model)
 	
+	# DEBUG
+	#store_measures(jmeasures,args.model)
 	
-	store_measures(jmeasures,args.model)
-	
+	# This is called for if the values are changed in custom conf
+	load_configuration()
+
 	if not args.nodaemon:
 		threading.Timer(interval, core).start()
 

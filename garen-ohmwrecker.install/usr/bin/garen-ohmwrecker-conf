@@ -18,8 +18,6 @@ import logging
 garen_conf="/etc/garen-ohmwrecker/garen.conf"
 garen_custom_conf="/etc/garen-ohmwrecker/garen-custom.conf"
 garen_conf_d="/etc/garen-ohmwrecker/conf.d/"
-rutaJSON=""
-rutaNotesJSON=""
 
 
 # Some values for default variables
