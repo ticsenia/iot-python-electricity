@@ -213,9 +213,9 @@ def get_json(model):
 	
 	# DEBUG
 	#logging.warning("URL is "+url)
-	return "{}"
+	#return "{}"
 	# Realizamos la peticion
-	#r = urllib.request.urlopen(url)
+	r = urllib.request.urlopen(url)
 	
 	# Devolvemos el resultado ya como objeto diccionario
 	return json.loads(r.read().decode())
@@ -290,7 +290,7 @@ def core():
 	jmeasures = get_json(args.model)
 	
 	# DEBUG
-	#store_measures(jmeasures,args.model)
+	store_measures(jmeasures,args.model)
 	
 	# This is called for if the values are changed in custom conf
 	load_configuration()
