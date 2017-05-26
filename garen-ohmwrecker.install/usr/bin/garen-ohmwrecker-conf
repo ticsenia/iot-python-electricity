@@ -62,7 +62,9 @@ def get_parameters():
 
 	parser = argparse.ArgumentParser(description='Get/Set values from Garen')
 	parser.add_argument("-s","--setip",help="set value of the IP")
+	parser.add_argument("-si","--setinterval",help="set value of the IP")
 	parser.add_argument("-g","--getip",help="get value of the IP", action="store_true")
+	parser.add_argument("-gi","--getinterval",help="get value of the interval", action="store_true")
 
 
 	# Obtenemos los diferentes argumentos	
@@ -75,6 +77,15 @@ def set_ip(args,config):
 	print(" * [Garen Conf] : Setting ip in configuration file")
 	# Establecemos la IP en la configuracion.
 	config["general"]["sensor_ip"]=args.setip
+
+
+	return config
+
+def set_interval(args,config):
+	
+	print(" * [Garen Conf] : Setting interval in configuration file")
+	# Establecemos la IP en la configuracion.
+	config["daemon"]["interval"]=args.setinterval
 
 
 	return config
@@ -97,10 +108,14 @@ if __name__ == "__main__":
 	config = load_configuration()
 	if (args.getip):
 		print(" * [Garen Conf] : Sensor ip is "+config["general"]["sensor_ip"])
-	
+	if (args.getinterval):
+		print(" * [Garen Conf] : Sensor ip is "+config["daemon"]["interval"])
+
 	if (args.setip):
 		config = set_ip(args,config)
-				
+			
+	if (args.setinterval):
+		config = set_interval(args,config)	
 
 	# Save configuration file
 	with open(garen_custom_conf, 'w') as configfile:
