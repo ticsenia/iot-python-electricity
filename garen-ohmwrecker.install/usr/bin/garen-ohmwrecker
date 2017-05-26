@@ -29,8 +29,8 @@ garen_conf_d="/etc/garen-ohmwrecker/conf.d/"
 rutaJSON=""
 rutaNotesJSON=""
 
-# Logging values
-logging.basicConfig(filename=garen_log,format='%(asctime)s %(message)s')
+
+
 
 # Some values for default variables
 default_sensor_model=""
@@ -62,6 +62,8 @@ def load_configuration():
 	
 	# Lo primero, hacemos log de que la configuracion va a ser
 	# cargada en memoria.	
+	# Logging values
+	logging.basicConfig(filename=garen_log,format='%(asctime)s %(message)s')
 	logging.warning('Loading configuration')
 
 	# Obtenemos un objeto de tipo configparser
