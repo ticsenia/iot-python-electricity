@@ -101,7 +101,7 @@ if __name__ == "__main__":
 	print(config)
 
 	if (args.getip):
-		print("Garen Conf : Sensor ip is "+sensor_ip)
+		print("Garen Conf : Sensor ip is "+config["general"]["sensor_ip"])
 	
 	if (args.setip):
 		set_ip(args,config)
