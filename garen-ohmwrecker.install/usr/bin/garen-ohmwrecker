@@ -201,9 +201,9 @@ def get_json(model):
 	
 	# DEBUG
 	#logging.warning("URL is "+url)
-	#return "{}"
+	return "{}"
 	# Realizamos la peticion
-	r = urllib.request.urlopen(url)
+	#r = urllib.request.urlopen(url)
 	
 	# Devolvemos el resultado ya como objeto diccionario
 	return json.loads(r.read().decode())
