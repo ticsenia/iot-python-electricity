@@ -252,6 +252,8 @@ def store_measures(jmeasures,model):
 		
 		logging.warning("* Key -> " + str(key) + "-- Values -> "+str(value))
 		try:
+			if skeys.contains(key):
+				loggint.warning("duplicada..."+str(key))
 			skeys.append(str(key).replace("[","").replace("]",""))
 			smeasures.append(str(value[0]).replace("[","").replace("]",""))
 		except Exception as e:
