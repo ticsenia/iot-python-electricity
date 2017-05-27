@@ -303,7 +303,7 @@ def core():
 	
 	# DEBUG
 	auxf = open("/usr/share/garen-ohmwrecker/tests/last.json")
-	jmeasures = dirty_solution(auxf)
+	jmeasures = dirty_solution(auxf.read())
 	jmeasures = json.load(jmeasures)
 	logging.warning(str(jmeasures))
 	
