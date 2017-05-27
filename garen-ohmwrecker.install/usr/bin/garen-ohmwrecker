@@ -125,9 +125,80 @@ def dirty_solution(jsonString):
 	# Vamos a cambiar las diferentes claves del JSON antes de 
 	# cargarlo en memoria.
 	# esto es dificilillo
-	jsonString.replace("G_ULN","G_ULN_0",1)
-	print(" * Una vez reemplazados, volvemos")
-	print(str(jsonString))
+	jsonString = jsonString.replace("_G_ULN","_G_ULN_0",1)
+	jsonString = jsonString.replace("_G_ULN\"","_G_ULN_1\"",1)
+	jsonString = jsonString.replace("_G_ULN\"","_G_ULN_2\"",1)
+
+	jsonString = jsonString.replace("_G_ULL","_G_ULL_0",1)
+	jsonString = jsonString.replace("_G_ULL\"","_G_ULL_1\"",1)
+	jsonString = jsonString.replace("_G_ULL\"","_G_ULL_2\"",1)
+
+	jsonString = jsonString.replace("_G_ILN","_G_ILN_0",1)
+	jsonString = jsonString.replace("_G_ILN\"","_G_ILN_1\"",1)
+	jsonString = jsonString.replace("_G_ILN\"","_G_ILN_2\"",1)
+
+	jsonString = jsonString.replace("_G_PLN","_G_PLN_0",1)
+	jsonString = jsonString.replace("_G_PLN\"","_G_PLN_1\"",1)
+	jsonString = jsonString.replace("_G_PLN\"","_G_PLN_2\"",1)
+
+	jsonString = jsonString.replace("_G_SLN","_G_SLN_0",1)
+	jsonString = jsonString.replace("_G_SLN\"","_G_SLN_1\"",1)
+	jsonString = jsonString.replace("_G_SLN\"","_G_SLN_2\"",1)
+
+	jsonString = jsonString.replace("_G_QLN","_G_QLN_0",1)
+	jsonString = jsonString.replace("_G_QLN\"","_G_QLN_1\"",1)
+	jsonString = jsonString.replace("_G_QLN\"","_G_QLN_2\"",1)
+	
+	#_G_COS_PHI
+	jsonString = jsonString.replace("_G_COS_PHI","_G_COS_PHI_0",1)
+	jsonString = jsonString.replace("_G_COS_PHI\"","_G_COS_PHI_1\"",1)
+	jsonString = jsonString.replace("_G_COS_PHI\"","_G_COS_PHI_2\"",1)
+	
+	# _G_WH
+	jsonString = jsonString.replace("_G_WH","_G_WH_0",1)
+	jsonString = jsonString.replace("_G_WH\"","_G_WH_1\"",1)
+	jsonString = jsonString.replace("_G_WH\"","_G_WH_2\"",1)
+
+	# _G_WH_V
+	jsonString = jsonString.replace("_G_WH_V","_G_WH_V_0",1)
+	jsonString = jsonString.replace("_G_WH_V\"","_G_WH_V_1\"",1)
+	jsonString = jsonString.replace("_G_WH_V\"","_G_WH_V_2\"",1)	
+	
+	# _G_WH_Z
+	jsonString = jsonString.replace("_G_WH_Z","_G_WH_Z_0",1)
+	jsonString = jsonString.replace("_G_WH_Z\"","_G_WH_Z_1\"",1)
+	jsonString = jsonString.replace("_G_WH_Z\"","_G_WH_Z_2\"",1)
+
+	## _G_WH_S
+	jsonString = jsonString.replace("_G_WH_S\"","_G_WH_S_0\"",1)
+	jsonString = jsonString.replace("_G_WH_S\"","_G_WH_S_1\"",1)
+	jsonString = jsonString.replace("_G_WH_S\"","_G_WH_S_2\"",1)
+
+	## _G_QH
+	jsonString = jsonString.replace("_G_QH","_G_QH_0",1)
+	jsonString = jsonString.replace("_G_QH\"","_G_QH_1\"",1)
+	jsonString = jsonString.replace("_G_QH\"","_G_QH_2\"",1)
+
+	## _G_IQH
+	jsonString = jsonString.replace("_G_IQH","_G_IQH_0",1)
+	jsonString = jsonString.replace("_G_IQH\"","_G_IQH_1\"",1)
+	jsonString = jsonString.replace("_G_IQH\"","_G_IQH_2\"",1)
+
+	## _G_CQH
+	jsonString = jsonString.replace("_G_CQH","_G_CQH_0",1)
+	jsonString = jsonString.replace("_G_CQH\"","_G_CQH_1\"",1)
+	jsonString = jsonString.replace("_G_CQH\"","_G_CQH_2\"",1)
+
+	# _G_THD_ULN
+	jsonString = jsonString.replace("_G_THD_ULN","_G_THD_ULN_0",1)
+	jsonString = jsonString.replace("_G_THD_ULN\"","_G_THD_ULN_1\"",1)
+	jsonString = jsonString.replace("_G_THD_ULN\"","_G_THD_ULN_2\"",1)
+
+	# _G_THD_ILN
+	jsonString = jsonString.replace("_G_THD_ILN","_G_THD_ILN_0",1)
+	jsonString = jsonString.replace("_G_THD_ILN\"","_G_THD_ILN_1\"",1)
+	jsonString = jsonString.replace("_G_THD_ILN\"","_G_THD_ILN_2\"",1)
+
 	return jsonString
 
 	
@@ -147,7 +218,7 @@ def store_in_db(skeys,smeasures):
 		cursor = db.cursor()
 
 		# Prepare SQL query to INSERT a record into the database.
-		sql = ("INSERT INTO umg511_tbl ("+",".join(skeys)+") VALUES ('" +"','".join(smeasures)+"')")
+		sql = ("INSERT INTO umg511_tbl ("+",".join(skeys)+") VALUES ('" +"','".join(smeasures)+"');")
 		logging.warning(str(sql))
 		try: 
 			# Execute the SQL command
@@ -258,11 +329,8 @@ def store_measures(jmeasures,model):
 	#		linea= linea +"None"
 	#	smeasures=smeasures+linea+"\n"
 	for key, value in jmeasures.items():
-		
-		logging.warning("* Key -> " + str(key) + "-- Values -> "+str(value))
+		 #logging.warning("* Key -> " + str(key) + "-- Values -> "+str(value))
 		try:
-			if key in skeys:
-				loggint.warning("duplicada..."+str(key))
 			skeys.append(str(key).replace("[","").replace("]",""))
 			smeasures.append(str(value[0]).replace("[","").replace("]",""))
 		except Exception as e:
@@ -305,7 +373,7 @@ def core():
 	# DEBUG
 	auxf = open("/usr/share/garen-ohmwrecker/tests/last.json")
 	auxmeasures = dirty_solution(auxf.read())
-	jmeasures = json.loads(auxf)
+	jmeasures = json.loads(auxmeasures)
 	logging.warning(str(jmeasures))
 	
 	
