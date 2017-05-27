@@ -126,7 +126,8 @@ def dirty_solution(jsonString):
 	# cargarlo en memoria.
 	# esto es dificilillo
 	jsonString.replace("G_ULN","G_ULN_0",1)
-
+	print(" * Una vez reemplazados, volvemos")
+	print(str(jsonString))
 	return jsonString
 
 	
