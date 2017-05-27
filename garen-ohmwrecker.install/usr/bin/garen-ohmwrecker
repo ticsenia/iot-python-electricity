@@ -120,6 +120,14 @@ def load_configuration():
 
 	logging.warning(" * Load configuration done: "+str(sensor_ip)+" each "+str(interval)+" seconds")
 
+def dirty_solution(jsonString):
+	#
+	# Vamos a cambiar las diferentes claves del JSON antes de 
+	# cargarlo en memoria.
+	# esto es dificilillo
+	jsonString.replace("G_ULN","G_ULN_0",1)
+
+	return jsonString
 
 	
 	
@@ -295,6 +303,7 @@ def core():
 	
 	# DEBUG
 	auxf = open("/usr/share/garen-ohmwrecker/tests/last.json")
+	jmeasures = dirty_solution(auxf.read())
 	jmeasures = json.load(auxf)
 	logging.warning(str(jmeasures))
 	
