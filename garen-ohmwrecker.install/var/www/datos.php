@@ -35,7 +35,7 @@
 		  <center><?php echo $row['umg511_day'];?></center>
 		 </td>
 		 <td name="descargar">
-		  <form action="export.php" method="POST" id="enviar">
+		  <form action="export-garen.php" method="POST" id="enviar">
 		    <input name="idOculto" id="idOculto" type="hidden" value="<?php echo $row['umg511_id']; ?>" />
 		    <input name="fecha" id="idOculto" type="hidden" value="<?php echo $row['umg511_day']; ?>" />
 			<center><input type="submit" value="Download" class="btn" /></center>
