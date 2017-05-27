@@ -296,6 +296,8 @@ def core():
 	# DEBUG
 	auxf = open("/usr/share/garen-ohmwrecker/tests/last.json")
 	jmeasures = json.load(auxf)
+	logging.warning(str(jmeasures))
+	
 	
 	#jmeasures = get_json(args.model)
 	
