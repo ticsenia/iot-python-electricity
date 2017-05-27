@@ -252,7 +252,7 @@ def store_measures(jmeasures,model):
 		
 		logging.warning("* Key -> " + str(key) + "-- Values -> "+str(value))
 		try:
-			skeys.append(str(key).replace("[","").replace("]","").replace("_G","G"))
+			skeys.append(str(key).replace("[","").replace("]",""))
 			smeasures.append(str(value[0]).replace("[","").replace("]",""))
 		except Exception as e:
 			logging.warning("Error: "+str(e))
