@@ -290,13 +290,28 @@ def get_json(model):
 	url="http://"+str(sensor_ip)+"/json.do?"+var_model
 	
 	# DEBUG
-	#logging.warning("URL is "+url)
-	return "{}"
+	# logging.warning("URL is "+url)
 	# Realizamos la peticion
 	r = urllib.request.urlopen(url)
 	
 	# Devolvemos el resultado ya como objeto diccionario
-	return json.loads(r.read().decode())
+        # PATXI
+        # Esto antes era asi, leiamos el json desde la URL y lo decodificabamos
+        # y luego al "cargarlo" en memoria, se construia como objeto, el problema
+        # de ahora es que debemos realizar los cambios "antes" de que sea
+        # un objeto en memoria, debemos tratarlo mientras aun sea
+        # un String. Yo estas lineas no las he podido probar, ya que obviamente 
+        # no puedo realizar la conexion con la Janitza de ninguna 
+        # manera.
+        # Os dejo la linea que habia antes:
+	#return json.loads(r.read().decode())
+
+        # Por si la necesitais, aunque debeis usar el 
+        # metodo dirty_solution para poder luego hacer los 
+        # inserts como tocan.
+        stringJson = r.read().decode()
+        stringJson = dirty_solution(stringJson)
+	return json.loads(stringJson)
 	
 
 def store_measures(jmeasures,model):
@@ -316,20 +331,7 @@ def store_measures(jmeasures,model):
 	# En un principio dejamos la variable vacia.
 	skeys=[]
 	smeasures=[]
-	#for key, value in jmeasures.items():
-	#	logging.warning("* Key -> " + str(key) + "-- Values -> "+str(value))
-	#	linea = str(key)+","+str(value[0])+","+str(value[1])+","
-	#
-	#	try:
-	#		logging.warning("-- Notes -> "+jnotes[key])
-	#
-	#	linea= linea +str(jnotes[key]).replace(",","-").replace(";","-")
-	#	except Exception as e:
-	#		logging.warning("-- Notes -> Vacio")
-	#		linea= linea +"None"
-	#	smeasures=smeasures+linea+"\n"
 	for key, value in jmeasures.items():
-		 #logging.warning("* Key -> " + str(key) + "-- Values -> "+str(value))
 		try:
 			skeys.append(str(key).replace("[","").replace("]",""))
 			smeasures.append(str(value[0]).replace("[","").replace("]",""))
@@ -337,7 +339,6 @@ def store_measures(jmeasures,model):
 			logging.warning("Error: "+str(e))
 	# Y ahora almacenamos en la base de datos 
 	# los valores obtenidos
-	# DEBUG
 	store_in_db(skeys,smeasures)
 	
 
@@ -357,6 +358,7 @@ def get_parameters():
 	parser.add_argument("-m","--model",help="the model of sensor")
 	parser.add_argument("-c","--csv",help="type of content to get [CSV format data]", action="store_true")
 	parser.add_argument("--nodaemon", help="Not launch program as a daemon", action="store_true")
+	parser.add_argument("--debug", help="Debugging mode, not Janitza", action="store_true")
 
 	# Obtenemos los diferentes argumentos	
 	args = parser.parse_args()
@@ -371,13 +373,15 @@ def core():
 	variable_list = get_list_of_variables(args.model)
 	
 	# DEBUG
-	auxf = open("/usr/share/garen-ohmwrecker/tests/last.json")
-	auxmeasures = dirty_solution(auxf.read())
-	jmeasures = json.loads(auxmeasures)
-	logging.warning(str(jmeasures))
-	
-	
-	#jmeasures = get_json(args.model)
+	# Esta parte la tenemos aqui para poder hacer pruebas 
+        # en escenarios "desconectados"
+        if args.debug:
+            auxf = open("/usr/share/garen-ohmwrecker/tests/last.json")
+	    auxmeasures = dirty_solution(auxf.read())
+	    jmeasures = json.loads(auxmeasures)
+        else:
+            # Obtenemos las medidas desde la url
+            jmeasures = get_json(args.model)
 	
 	# DEBUG
 	store_measures(jmeasures,args.model)

@@ -1,22 +1,20 @@
 -- DATABASE 
-
+-- Creamos la base de datos
 DROP DATABASE IF EXISTS janitza511;
 CREATE DATABASE janitza511;
 USE janitza511;
 
 -- USER 
 -- DROP USER IF EXISTS "garen"@"localhost";
+-- Creamos el usuario para la base de datos
 drop user if exists garen@localhost;
 flush privileges;
 create user garen@localhost identified by 'Jan1tza511';
-
 GRANT ALL PRIVILEGES ON *.* TO "garen"@"localhost" WITH GRANT OPTION;
--- GRANT ALL PRIVILEGES ON *.* TO user1 @'localhost'  IDENTIFIED BY 'user1' WITH GRANT OPTION;;
 FLUSH PRIVILEGES;
 
 
 -- TABLES
--- DROP TABLE IF EXISTS umg511_tbl;
 CREATE TABLE umg511_tbl (
 	_ID int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	_DAY timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
