@@ -295,22 +295,22 @@ def get_json(model):
 	r = urllib.request.urlopen(url)
 	
 	# Devolvemos el resultado ya como objeto diccionario
-        # PATXI
-        # Esto antes era asi, leiamos el json desde la URL y lo decodificabamos
-        # y luego al "cargarlo" en memoria, se construia como objeto, el problema
-        # de ahora es que debemos realizar los cambios "antes" de que sea
-        # un objeto en memoria, debemos tratarlo mientras aun sea
-        # un String. Yo estas lineas no las he podido probar, ya que obviamente 
-        # no puedo realizar la conexion con la Janitza de ninguna 
-        # manera.
-        # Os dejo la linea que habia antes:
+	# PATXI
+	# Esto antes era asi, leiamos el json desde la URL y lo decodificabamos
+	# y luego al "cargarlo" en memoria, se construia como objeto, el problema
+	# de ahora es que debemos realizar los cambios "antes" de que sea
+	# un objeto en memoria, debemos tratarlo mientras aun sea
+	# un String. Yo estas lineas no las he podido probar, ya que obviamente 
+	# no puedo realizar la conexion con la Janitza de ninguna 
+	# manera.
+	# Os dejo la linea que habia antes:
 	#return json.loads(r.read().decode())
 
-        # Por si la necesitais, aunque debeis usar el 
-        # metodo dirty_solution para poder luego hacer los 
-        # inserts como tocan.
-        stringJson = r.read().decode()
-        stringJson = dirty_solution(stringJson)
+	# Por si la necesitais, aunque debeis usar el 
+	# metodo dirty_solution para poder luego hacer los 
+	# inserts como tocan.
+	stringJson = r.read().decode()
+	stringJson = dirty_solution(stringJson)
 	return json.loads(stringJson)
 	
 
