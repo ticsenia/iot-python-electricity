@@ -1,3 +1,14 @@
+garen-ohmwrecker (0.6) xenial; urgency=medium
+
+  * A lot of changes:
+    - New binary to initialize database
+    - New parameter (--debug) that use json from examples
+      instead of getting information from Janitza
+    - New dirty solution to solve the "dicctionary to json" problem
+    - Deleting a lot of legacy code.
+
+ -- Angel Berlanas Vicente <angel.berlanas@gmail.com>  Sun, 28 May 2017 17:49:44 +0200
+
 garen-ohmwrecker (0.5) xenial; urgency=medium
 
   * Added phpes
