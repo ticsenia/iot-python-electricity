@@ -374,14 +374,14 @@ def core():
 	
 	# DEBUG
 	# Esta parte la tenemos aqui para poder hacer pruebas 
-        # en escenarios "desconectados"
-        if args.debug:
-            auxf = open("/usr/share/garen-ohmwrecker/tests/last.json")
-	    auxmeasures = dirty_solution(auxf.read())
-	    jmeasures = json.loads(auxmeasures)
-        else:
-            # Obtenemos las medidas desde la url
-            jmeasures = get_json(args.model)
+	# en escenarios "desconectados"
+	if args.debug:
+		auxf = open("/usr/share/garen-ohmwrecker/tests/last.json")
+		auxmeasures = dirty_solution(auxf.read())
+		jmeasures = json.loads(auxmeasures)
+	else:
+		# Obtenemos las medidas desde la url
+		jmeasures = get_json(args.model)
 	
 	# DEBUG
 	store_measures(jmeasures,args.model)
