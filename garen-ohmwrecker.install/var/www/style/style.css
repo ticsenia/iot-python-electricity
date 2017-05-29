@@ -72,7 +72,7 @@ li a:hover {
 .datos {
   margin: 80px auto;
   width: 800px; 
-  height: 400px; 
+  height: 300px; 
   -webkit-border-radius: 8px/7px; 
   -moz-border-radius: 8px/7px; 
   border-radius: 8px/7px; 
@@ -81,7 +81,7 @@ li a:hover {
   -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
   box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
   border: solid 1px #cbc9c9;
-   overflow:scroll;
+  padding-top: 100px;
 }
 
 
@@ -170,10 +170,6 @@ input[type=text]{
 	font-size: 13px;
 }
 
-.hola {
-	margin-left: 35px;	
-}
-
 .center {
     text-align-last:center;
 	width: 80%;
@@ -184,80 +180,6 @@ input[type=text]{
 	margin-top: 15px;
 }
 
-.a_demo_two {
-	background-color:#3bb3e0;
-	padding:10px;
-	position:relative;
-	font-family: 'Open Sans', sans-serif;
-	font-size:12px;
-	text-decoration:none;
-	color:#fff;
-	background-image: linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
-	background-image: -o-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
-	background-image: -moz-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
-	background-image: -webkit-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
-	background-image: -ms-linear-gradient(bottom, rgb(44,160,202) 0%, rgb(62,184,229) 100%);
-	background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0, rgb(44,160,202)),
-	color-stop(1, rgb(62,184,229))
-	);
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	-o-border-radius: 5px;
-	border-radius: 5px;
-	position:absolute;
-	margin-top: 125px;
-	margin-left:225px;
-}
-
-.centro{
-  padding: 0.5rem;
-  background: #484848 ;
-  color: white;
-  text-align: center;
-  font-size: 21px;
-
-}
-
-#cuadro{
-	width: 90%;
-	background: #F8F8F8 ;
-	padding: 25px;
-	margin: 5px auto;
-	border: 3px solid #D8D8D8;
-}
-#titulo{
-	width: 100%;
-	background: #282828;
-	color:white;
-
-}
-
-table {
-width:90%;
-border-top:1px solid #e5eff8;
-border-right:1px solid #e5eff8;
-margin:1em auto;
-border-collapse:collapse;
-}
-td {
-color:#678197;
-border-bottom:1px solid #e5eff8;
-border-left:1px solid #e5eff8;
-padding:.3em 1em;
-text-align:center;
-}
-
-.titulotd {
-	color: white;
-	border-bottom:1px solid #e5eff8;
-	border-left:1px solid #e5eff8;
-	padding:.3em 1em;
-	text-align:center;
-}
 
 .btn {
   -webkit-border-radius: 5;
