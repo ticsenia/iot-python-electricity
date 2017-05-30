@@ -1,5 +1,5 @@
 <?php
-	require('conexion.php');
+	require('exec/conexion.php');
 	$query="SELECT *  FROM umg511_tbl"; 
 	$resultado=$mysqli->query($query);
 ?>
@@ -20,7 +20,7 @@
 	 	 <div class="datos">
 		 <h1>DOWNLOAD</h1>
 		 <hr>
-		  <form action="export-garen.php" method="POST" id="enviar">
+		  <form action="exec/export-garen.php" method="POST" id="enviar">
 			<center><input type="submit" value="Download" class="btn" /></center>
 		  </form>
 
